@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuildAR Pro — Privacy Policy</title>
+<!--
+  Generated from BUILDAR_PRIVACY_POLICY_DRAFT_2026-09-10.md (policy body only;
+  the fact-check appendix and OPEN ITEMS section in that draft are internal
+  and are intentionally NOT reproduced here).
+
+  OPEN ITEMS carried over from the draft, still unresolved as of publish date:
+  - Support email is a PLACEHOLDER: support@buildarpro.com (Inon to confirm/replace).
+  - Google Cloud Vision retention wording: currently states BuildAR does not
+    retain frames and points to GCP's own terms; a firmer statement needs
+    sourcing from Google's current Vision API data-usage terms before it's added.
+  - Anthropic retention wording: currently generic ("per its data-usage
+    policies for API traffic"); a specific retention number needs sourcing
+    from Anthropic's current commercial terms before it's added.
+  - Public deletion-page URL below (delete-account.html) now exists as of this
+    publish (T8); update this file's section 6 link if the final Pages URL differs.
+-->
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --muted: #555555;
+    --border: #dddddd;
+    --accent: #2a5db0;
+    --table-head: #f2f2f2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14161a;
+      --fg: #e8e8e8;
+      --muted: #aaaaaa;
+      --border: #3a3d42;
+      --accent: #7fb0ff;
+      --table-head: #1f2227;
+    }
+  }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 4rem;
+  }
+  h1 { font-size: 1.7rem; margin-bottom: 0.25rem; }
+  h2 { font-size: 1.25rem; margin-top: 2.2rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .meta, .note { color: var(--muted); font-size: 0.92rem; }
+  .note { background: var(--table-head); border: 1px solid var(--border); border-radius: 6px; padding: 0.75rem 1rem; margin: 1rem 0; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.92rem; }
+  th, td { border: 1px solid var(--border); padding: 0.5rem 0.6rem; text-align: left; vertical-align: top; }
+  th { background: var(--table-head); }
+  a { color: var(--accent); }
+  code { background: var(--table-head); padding: 0.1em 0.35em; border-radius: 3px; font-size: 0.9em; }
+  .overflow { overflow-x: auto; }
+  footer { margin-top: 3rem; color: var(--muted); font-size: 0.85rem; }
+</style>
+</head>
+<body>
+
+<h1>BuildAR Pro — Privacy Policy</h1>
+<p class="meta"><strong>Effective date:</strong> 2026-09-11 &nbsp;|&nbsp; <strong>Last updated:</strong> 2026-09-11</p>
+
+<p><strong>Applies to:</strong> the BuildAR Pro mobile application for Android ("the App") and the parts of its backend API that the App uses. Content-authoring tools used only by BuildAR Pro staff and approved content creators (for example the assembly-manual ingestion pipeline) are internal and are not available to app users; where those tools use an additional provider it is noted below for completeness.</p>
+
+<h2>Who we are</h2>
+<p>BuildAR Pro is operated by Inon Baasov ("BuildAR Pro", "we", "us", "our"), based in Israel. This policy explains what personal data the App processes, why, who it is shared with, how long it is kept, and the choices and rights you have. If you have questions, contact us at <strong>support@buildarpro.com</strong>.</p>
+
+<h2>At a glance</h2>
+<div class="overflow">
+<table>
+<tr><th>Data</th><th>Collected?</th><th>Linked to your account?</th><th>Purpose</th><th>Kept where</th></tr>
+<tr><td>Email address</td><td>Yes</td><td>Yes</td><td>Account creation, sign-in, password reset</td><td>Supabase Auth</td></tr>
+<tr><td>Password</td><td>Yes (stored only as a salted hash by Supabase Auth; we never see it in plaintext)</td><td>Yes</td><td>Authentication</td><td>Supabase Auth</td></tr>
+<tr><td>Build activity — selected project, current step index, session status</td><td>Yes</td><td>Yes</td><td>Core app functionality; "resume your last project"</td><td>Supabase database</td></tr>
+<tr><td>Activity events — session started/resumed/completed, step viewed/completed, assistant invoked</td><td>Yes</td><td>Yes</td><td>Product analytics, funnel measurement, resume feature</td><td>Supabase database</td></tr>
+<tr><td>AR camera frames (during an AR session only)</td><td>Processed transiently — <strong>not</strong> stored by us</td><td>Sent with your auth token; not persisted</td><td>Detect the part you are looking for and place the AR overlay</td><td>Sent to Google Cloud Vision; discarded after the response</td></tr>
+<tr><td>AI Assistant question text (only if you use the Assistant)</td><td>Sent to Anthropic to generate a reply; <strong>not</strong> stored by us as text</td><td>We store metadata only (question length, latency, model name)</td><td>Answer your build question</td><td>Anthropic (Claude API) processing; metadata in Supabase database</td></tr>
+<tr><td>Local app cache (auth session token, last-session record)</td><td>Stored on your device only</td><td>n/a</td><td>Keep you signed in; offline "resume" banner</td><td>Device storage (AsyncStorage)</td></tr>
+<tr><td>Operational server logs (IP address, timestamp, request path, user ID)</td><td>Yes, short-lived</td><td>By user ID</td><td>Security, abuse prevention, debugging</td><td>Railway (rotating log files)</td></tr>
+<tr><td>Location, microphone, contacts, photos library, device advertising ID</td><td><strong>No</strong></td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Third-party analytics / advertising / crash-reporting SDKs</td><td><strong>None</strong></td><td>—</td><td>—</td><td>—</td></tr>
+</table>
+</div>
+
+<h2>1. Information we collect</h2>
+
+<h3>1.1 Account information</h3>
+<p>When you create an account you provide an <strong>email address</strong> and a <strong>password</strong>. Authentication is handled by Supabase Auth. Your password is transmitted over HTTPS and stored by Supabase only as a salted hash; we never have access to your plaintext password. Supabase Auth also records standard authentication metadata (for example account creation time, last sign-in time, and the IP address used to authenticate) as part of providing the sign-in service. The App does not ask for your name, phone number, address, date of birth, or payment details.</p>
+
+<h3>1.2 Build activity</h3>
+<p>When you start building a project, the App creates a <strong>session</strong> on our server that stores: the project you selected, your current step index, the session status (active / completed / abandoned), and timestamps. As you move through the steps this record is updated. This data is tied to your account and is what lets you leave and later resume a build.</p>
+
+<h3>1.3 Activity events</h3>
+<p>Our server records <strong>activity events</strong> in our database, linked to your account, when you: start, resume, or complete a session; view or complete a step; or invoke the AI Assistant. For an Assistant event we also store the <strong>character count</strong> of your question (not the text of it), the response latency, the AI model name, and a content-safety verdict. We use these events for product analytics and to understand where users get stuck.</p>
+
+<h3>1.4 Camera frames during AR sessions</h3>
+<p>AR guidance is optional and requires camera permission. <strong>Only while an AR session is running</strong>, the App periodically captures a single still frame from the AR camera view, downscales it on your device to at most 800×800 pixels (JPEG), encodes it, and sends it over HTTPS with your authentication token to our API. Our API forwards the image to <strong>Google Cloud Vision API</strong>, which returns object- and text-detection results used to locate the part you are assembling and anchor the on-screen overlay.</p>
+<p>These frames are <strong>not</strong> saved to your device's photo gallery, are <strong>not</strong> written to our database, and are <strong>not</strong> retained by our servers after the detection response is returned — they are processed transiently. Google processes the image to produce the detection result; Google's handling of Cloud Vision API requests is governed by the Google Cloud Platform terms and data processing terms.</p>
+<p>The App does not record video or audio and has no access to your existing photos or media library.</p>
+
+<h3>1.5 AI Assistant</h3>
+<p>If you open the in-app AI Assistant and ask a question, the App sends over HTTPS to our API — and our API then sends to <strong>Anthropic's Claude API</strong> — the <strong>text of your question</strong> together with context about the project you are building (its title, summary, and the text of its steps). Anthropic returns the answer shown in the App. We do not store the text of your question or the answer; we store only the event metadata described in section 1.3. Anthropic's processing of API traffic is governed by Anthropic's commercial terms and data-usage policies.</p>
+
+<h3>1.6 Local storage on your device</h3>
+<p>The App stores the following on your device only, using the operating system's app storage (AsyncStorage): your Supabase authentication session (so you stay signed in across restarts) and a single "active session" record used for the offline resume banner (session ID, project ID, project name, current step index, total step count, and a timestamp). Your saved authentication session is cleared when you sign out. The resume record is cleared when you finish that build, and otherwise expires automatically after 7 days; uninstalling the App removes all local data.</p>
+
+<h3>1.7 Operational logs</h3>
+<p>Our API is hosted on Railway and writes rotating operational log files. These may include your IP address, request timestamps, the API path called, and your account's user identifier (a UUID). They do <strong>not</strong> contain your password, your camera frames, or the body of your AI Assistant questions. Logs are rotated on a short schedule and used for security, abuse prevention, and debugging.</p>
+
+<h2>2. How we use your information</h2>
+<p>We use the data above to: create and secure your account; authenticate you and let you reset your password; provide the core build-guidance features (projects, steps, sessions, resume); provide AR part detection and overlay placement; answer your questions through the AI Assistant; measure product usage and improve the App; and detect, prevent, and investigate abuse, security incidents, and technical problems.</p>
+<p>We do <strong>not</strong> use your data for advertising, we do <strong>not</strong> sell or rent personal data, and we do <strong>not</strong> share it with data brokers.</p>
+
+<h2>3. Who we share data with (sub-processors)</h2>
+<p>We share data only with the service providers that operate our infrastructure, and only as needed to run the App:</p>
+<div class="overflow">
+<table>
+<tr><th>Sub-processor</th><th>Role</th><th>Data it processes</th></tr>
+<tr><td><strong>Supabase</strong> (Supabase, Inc.)</td><td>Authentication, PostgreSQL database, file storage</td><td>Email, hashed password, auth metadata, profile record, build sessions, activity events</td></tr>
+<tr><td><strong>Railway</strong> (Railway Corp.)</td><td>Hosting for our backend API</td><td>Transiently processes all API request data; retains short-lived operational logs (IP, timestamps, user ID)</td></tr>
+<tr><td><strong>Google Cloud Vision API</strong> (Google LLC)</td><td>Object and text detection on AR camera frames</td><td>The downscaled camera frame sent during an AR session</td></tr>
+<tr><td><strong>Anthropic</strong> (Anthropic, PBC)</td><td>AI Assistant responses, and drafting step text from ingested manuals (Claude API)</td><td>The text of your AI Assistant question and the current project's step context; separately, text extracted from assembly manuals uploaded by content creators</td></tr>
+<tr><td><strong>LlamaIndex, Inc.</strong> (LlamaParse / LlamaIndex Cloud)</td><td>Parsing uploaded assembly-manual PDFs into structured text — used only by the internal creator/admin content pipeline, not by app users</td><td>Assembly-manual PDF files uploaded by BuildAR Pro staff or approved content creators (not end-user personal data)</td></tr>
+</table>
+</div>
+<p>Each provider processes data on our behalf under its own terms and security commitments. We may also disclose data if required by law, to enforce our terms, or to protect the rights, safety, or property of our users or the public.</p>
+
+<h2>4. International data transfers</h2>
+<p>Our sub-processors may process and store data on servers located outside your country, including in the United States and the European Union. Where data is transferred internationally, it is protected by the contractual and security terms of the relevant provider. All data in transit between the App, our production backend, and our sub-processors is encrypted using HTTPS/TLS (see the Security section).</p>
+
+<h2>5. Data retention</h2>
+<ul>
+<li><strong>Account data</strong> (email, hashed password, auth metadata, profile record): kept until you delete your account.</li>
+<li><strong>Build sessions and activity events</strong>: kept until you delete your account, after which they are removed automatically (deletion of your account cascades to your profile, your sessions, and your activity events).</li>
+<li><strong>AR camera frames</strong>: not retained — processed transiently and discarded after the detection response.</li>
+<li><strong>AI Assistant question text</strong>: not retained by us; handled by Anthropic according to its data-usage and retention policies for API traffic.</li>
+<li><strong>Local device data</strong>: the saved authentication session is cleared on sign-out; the resume record is cleared when you finish that build and otherwise self-expires after 7 days; uninstalling the App removes all local data.</li>
+<li><strong>Operational logs</strong>: retained only briefly and rotated on a short schedule.</li>
+</ul>
+
+<h2>6. Deleting your account and data</h2>
+<p>You can request deletion of your account and its associated data in any of these ways:</p>
+<ol>
+<li><strong>In the App</strong> — open the account/settings screen and choose "Delete account". <em>(In-app self-serve deletion is not yet live; use one of the methods below until it ships.)</em></li>
+<li><strong>On the web</strong> — visit <a href="./delete-account.html">our account-deletion page</a> and follow the instructions. This page is publicly accessible and does not require the App.</li>
+<li><strong>By email</strong> — write to <strong>support@buildarpro.com</strong> from the address associated with your account.</li>
+</ol>
+<p>When your account is deleted, we delete your authentication record, your profile, your build sessions, and your activity events. Catalog content that is not personal to you (for example project definitions) is unaffected. Deletion is permanent and cannot be undone. Camera frames and AI Assistant question text are not stored, so there is nothing further to delete on our side for those.</p>
+
+<h2>7. Your rights</h2>
+<p>Depending on where you live, you may have rights to access, correct, export, or delete your personal data, and to object to or restrict certain processing. You can exercise access, correction, and deletion rights using the contact details below or the deletion methods in section 6. Under Israel's Protection of Privacy Law, 5741-1981, you may request to review and correct information we hold about you.</p>
+
+<h2>8. Security</h2>
+<p>All connections from the App to our production backend and from our backend to our sub-processors use HTTPS/TLS encryption in transit. (The App also supports a plain-HTTP endpoint on the local loopback address for on-device development builds only; it is never used against production servers or real user data.) Access to your account data is protected by authentication and database row-level security so that your sessions and events are only accessible to you. Passwords are stored only as salted hashes by Supabase Auth. No method of transmission or storage is completely secure, but we take reasonable measures to protect your information.</p>
+
+<h2>9. Children</h2>
+<p>BuildAR Pro is a do-it-yourself assembly tool intended for a general adult audience. It is <strong>not directed to children</strong>, and we do not knowingly collect personal data from children under the age of 16 (or the minimum age required in your jurisdiction and by our authentication provider's terms). If you believe a child has provided us personal data, contact us and we will delete it.</p>
+
+<h2>10. Changes to this policy</h2>
+<p>We may update this policy from time to time. When we make material changes, we will update the "Last updated" date at the top and, where appropriate, provide a more prominent notice in the App or by email. Your continued use of the App after an update takes effect means you accept the revised policy.</p>
+
+<h2>11. Contact</h2>
+<p>Questions or requests about this policy or your data:<br>
+<strong>support@buildarpro.com</strong><br>
+Inon Baasov, Israel.</p>
+
+<h2>12. Governing law</h2>
+<p>This policy and any dispute relating to it are governed by the laws of the State of Israel, without regard to conflict-of-laws rules, and the competent courts of Israel have exclusive jurisdiction.</p>
+
+<footer>
+<p class="note">Support email (<code>support@buildarpro.com</code>) and effective date are placeholders pending Inon's confirmation. This page is served from a private source repository (GitHub Pages); the source is private by design, this rendered page is intentionally public.</p>
+</footer>
+
+</body>
+</html>

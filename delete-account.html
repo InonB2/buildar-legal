@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuildAR Pro — Delete Account</title>
+<!--
+  MANUAL request path only. In-app + backend automated deletion (T6) has not
+  shipped yet. Once T6 ships, this page should be upgraded to a self-serve
+  form (e.g. confirm email + trigger deletion via API) instead of the
+  "email us" instructions below. Update this comment and the body copy when
+  that lands.
+
+  Support email below is a PLACEHOLDER: support@buildarpro.com
+  (Inon to confirm/replace).
+-->
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --muted: #555555;
+    --border: #dddddd;
+    --accent: #2a5db0;
+    --box: #f2f2f2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14161a;
+      --fg: #e8e8e8;
+      --muted: #aaaaaa;
+      --border: #3a3d42;
+      --accent: #7fb0ff;
+      --box: #1f2227;
+    }
+  }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 4rem;
+  }
+  h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+  h2 { font-size: 1.15rem; margin-top: 2rem; }
+  .meta, .note { color: var(--muted); font-size: 0.92rem; }
+  .box { background: var(--box); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem 1.5rem; margin: 1.25rem 0; }
+  a { color: var(--accent); }
+  ul { padding-left: 1.3rem; }
+  footer { margin-top: 3rem; color: var(--muted); font-size: 0.85rem; }
+</style>
+</head>
+<body>
+
+<h1>Delete your BuildAR Pro account</h1>
+<p class="meta">Effective date: 2026-09-11</p>
+
+<p>You can request permanent deletion of your BuildAR Pro account and all data associated with it.</p>
+
+<h2>What gets deleted</h2>
+<p>Deleting your account permanently removes:</p>
+<ul>
+  <li>Your account and authentication record (email, password hash)</li>
+  <li>Your profile</li>
+  <li>All of your build sessions and progress (which projects you started, your current step, session status)</li>
+  <li>All of your activity events (session and step history, AI Assistant usage metadata)</li>
+</ul>
+<p>Catalog content that isn't personal to you (for example the project/assembly guides themselves) is not affected. This action is permanent and cannot be undone.</p>
+
+<h2>How to request deletion</h2>
+<div class="box">
+<p>Self-serve, in-app deletion is not yet available. To request deletion today, email:</p>
+<p style="font-size:1.1rem;"><strong><a href="mailto:support@buildarpro.com?subject=Delete%20my%20BuildAR%20Pro%20account">support@buildarpro.com</a></strong></p>
+<p>from the email address associated with your BuildAR Pro account, with the subject line "Delete my BuildAR Pro account" (or similar). Please include the account email address in the body if it's different from the sending address.</p>
+</div>
+
+<h2>Turnaround time</h2>
+<p>We process deletion requests <strong>within 30 days</strong> of receiving your email. You'll receive a confirmation once your account and data have been deleted.</p>
+
+<h2>Questions</h2>
+<p>See our <a href="./privacy.html">Privacy Policy</a> for more on what we collect and why, or contact <strong>support@buildarpro.com</strong> with any questions about this process.</p>
+
+<footer>
+<p class="note">This page currently describes a manual, email-based deletion request path. A self-serve in-app/web deletion flow is planned once the automated backend deletion feature ships. This page is served from a private source repository (GitHub Pages); the source is private by design, this rendered page is intentionally public.</p>
+</footer>
+
+</body>
+</html>
